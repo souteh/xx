@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="xxApp.fondDocument.home.title">Fond Documents</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-fond-document-edoc" [routerLink]="['/fond-document-edoc/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="xxApp.fondDocument.home.createLabel">
+            Create a new Fond Document
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="fondDocuments?.length === 0">
+        <span jhiTranslate="xxApp.fondDocument.home.notFound">No fondDocuments found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="fondDocuments && fondDocuments.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="denominationAr"><span jhiTranslate="xxApp.fondDocument.denominationAr">Denomination Ar</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="denominationFr"><span jhiTranslate="xxApp.fondDocument.denominationFr">Denomination Fr</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="formatPj"><span jhiTranslate="xxApp.fondDocument.formatPj">Format Pj</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="reference"><span jhiTranslate="xxApp.fondDocument.reference">Reference</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fondDocument of fondDocuments ;trackBy: trackId">
+                    <td><a [routerLink]="['/fond-document-edoc', fondDocument.id, 'view']">{{ fondDocument.id }}</a></td>
+                    <td>{{ fondDocument.denominationAr }}</td>
+                    <td>{{ fondDocument.denominationFr }}</td>
+                    <td>{{ fondDocument.formatPj }}</td>
+                    <td>{{ fondDocument.reference }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/fond-document-edoc', fondDocument.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/fond-document-edoc', fondDocument.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(fondDocument)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="fondDocuments && fondDocuments.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

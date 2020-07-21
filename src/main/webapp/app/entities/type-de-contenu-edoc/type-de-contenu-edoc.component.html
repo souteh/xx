@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="xxApp.typeDeContenu.home.title">Type De Contenus</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-type-de-contenu-edoc" [routerLink]="['/type-de-contenu-edoc/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="xxApp.typeDeContenu.home.createLabel">
+            Create a new Type De Contenu
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="typeDeContenus?.length === 0">
+        <span jhiTranslate="xxApp.typeDeContenu.home.notFound">No typeDeContenus found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="typeDeContenus && typeDeContenus.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="xxApp.typeDeContenu.denominationAr">Denomination Ar</span></th>
+                    <th scope="col" ><span jhiTranslate="xxApp.typeDeContenu.denominationFr">Denomination Fr</span></th>
+                    <th scope="col" ><span jhiTranslate="xxApp.typeDeContenu.reference">Reference</span></th>
+                    <th scope="col" ><span jhiTranslate="xxApp.typeDeContenu.code">Code</span></th>
+                    <th scope="col" ><span jhiTranslate="xxApp.typeDeContenu.fondDocument">Fond Document</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let typeDeContenu of typeDeContenus ;trackBy: trackId">
+                    <td><a [routerLink]="['/type-de-contenu-edoc', typeDeContenu.id, 'view']">{{ typeDeContenu.id }}</a></td>
+                    <td>{{ typeDeContenu.denominationAr }}</td>
+                    <td>{{ typeDeContenu.denominationFr }}</td>
+                    <td>{{ typeDeContenu.reference }}</td>
+                    <td>{{ typeDeContenu.code }}</td>
+                    <td>
+                        <div *ngIf="typeDeContenu.fondDocumentId">
+                            <a [routerLink]="['/fond-document-edoc', typeDeContenu.fondDocumentId , 'view']" >{{ typeDeContenu.fondDocumentId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/type-de-contenu-edoc', typeDeContenu.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/type-de-contenu-edoc', typeDeContenu.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(typeDeContenu)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

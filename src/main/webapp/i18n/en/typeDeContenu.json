@@ -1,0 +1,26 @@
+{
+  "xxApp": {
+    "typeDeContenu": {
+      "home": {
+        "title": "Type De Contenus",
+        "createLabel": "Create a new Type De Contenu",
+        "createOrEditLabel": "Create or edit a Type De Contenu",
+        "notFound": "No Type De Contenus found"
+      },
+      "created": "A new Type De Contenu is created with identifier {{ param }}",
+      "updated": "A Type De Contenu is updated with identifier {{ param }}",
+      "deleted": "A Type De Contenu is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Type De Contenu {{ id }}?"
+      },
+      "detail": {
+        "title": "Type De Contenu"
+      },
+      "denominationAr": "Denomination Ar",
+      "denominationFr": "Denomination Fr",
+      "reference": "Reference",
+      "code": "Code",
+      "fondDocument": "Fond Document"
+    }
+  }
+}
