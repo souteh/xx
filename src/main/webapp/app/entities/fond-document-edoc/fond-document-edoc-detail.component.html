@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="fondDocument">
+            <h2><span jhiTranslate="xxApp.fondDocument.detail.title">Fond Document</span> {{ fondDocument.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="xxApp.fondDocument.denominationAr">Denomination Ar</span></dt>
+                <dd>
+                    <span>{{ fondDocument.denominationAr }}</span>
+                </dd>
+                <dt><span jhiTranslate="xxApp.fondDocument.denominationFr">Denomination Fr</span></dt>
+                <dd>
+                    <span>{{ fondDocument.denominationFr }}</span>
+                </dd>
+                <dt><span jhiTranslate="xxApp.fondDocument.formatPj">Format Pj</span></dt>
+                <dd>
+                    <span>{{ fondDocument.formatPj }}</span>
+                </dd>
+                <dt><span jhiTranslate="xxApp.fondDocument.reference">Reference</span></dt>
+                <dd>
+                    <span>{{ fondDocument.reference }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/fond-document-edoc', fondDocument.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

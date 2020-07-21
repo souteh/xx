@@ -1,0 +1,43 @@
+{
+  "name": "FondDocument",
+  "fields": [
+    {
+      "fieldName": "denominationAr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "denominationFr",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "[A-Z]+"
+    },
+    {
+      "fieldName": "formatPj",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "reference",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "typeDeContenu",
+      "otherEntityRelationshipName": "fondDocument",
+      "relationshipName": "typesContenu"
+    }
+  ],
+  "changelogDate": "20200721222530",
+  "entityTableName": "fond_document",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*",
+  "angularJSSuffix": "edoc"
+}

@@ -1,0 +1,26 @@
+{
+  "xxApp": {
+    "fondDocument": {
+      "home": {
+        "title": "Fond Documents",
+        "createLabel": "Create a new Fond Document",
+        "createOrEditLabel": "Create or edit a Fond Document",
+        "notFound": "No Fond Documents found"
+      },
+      "created": "A new Fond Document is created with identifier {{ param }}",
+      "updated": "A Fond Document is updated with identifier {{ param }}",
+      "deleted": "A Fond Document is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Fond Document {{ id }}?"
+      },
+      "detail": {
+        "title": "Fond Document"
+      },
+      "denominationAr": "Denomination Ar",
+      "denominationFr": "Denomination Fr",
+      "formatPj": "Format Pj",
+      "reference": "Reference",
+      "typesContenu": "Types Contenu"
+    }
+  }
+}
